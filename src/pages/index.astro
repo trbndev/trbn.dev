@@ -1,0 +1,23 @@
+---
+import BaseLayout from "@/layouts/base.astro";
+import ProjectCard from "@/components/project-card.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+const blogEntries = await getCollection("blog");
+const projects = (await getCollection(
+	"projects",
+)) as CollectionEntry<"projects">[];
+---
+
+<BaseLayout>
+	<section>
+		<p>
+			Berlin-based IT Specialist in Data and Process Analysis. Enthusiast
+			in System Administration, Networks, Software Engineering and Media
+			Creation. Privacy and Security Advocate.
+		</p>
+	</section>
+	<section class="flex flex-col gap-4">
+		<h3 class="font-bold">Projects</h3>
+		{projects.map((project) => <ProjectCard project={project} />)}
+	</section>
+</BaseLayout>

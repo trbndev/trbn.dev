@@ -1,0 +1,19 @@
+---
+import clsx from "clsx";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+    project: CollectionEntry<"projects">;
+}
+
+const props = Astro.props as Props;
+---
+
+<a href={`/projects/${props.project.slug}`}>
+    <div>
+        <h3 class="font-bold">{props.project.data.title}</h3>
+        <p class="line-clamp-1">
+            {props.project.body}
+        </p>
+    </div>
+</a>
